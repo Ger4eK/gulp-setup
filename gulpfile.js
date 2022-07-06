@@ -6,6 +6,7 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
 const del = require('del');
 
 // Шляхи до наших початкових файлів
@@ -31,14 +32,23 @@ const styles = () => {
     .src(paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(less())
-    .pipe(cleanCSS())
+    .pipe(
+      autoprefixer({
+        cascade: false,
+      })
+    )
+    .pipe(
+      cleanCSS({
+        level: 2,
+      })
+    )
     .pipe(
       rename({
         basename: 'main',
         suffix: '.min',
       })
     )
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.styles.dest));
 };
 
@@ -47,10 +57,14 @@ const scripts = () => {
   return gulp
     .src(paths.scripts.src)
     .pipe(sourcemaps.init())
-    .pipe(babel())
+    .pipe(
+      babel({
+        presets: ['@babel/env'],
+      })
+    )
     .pipe(uglify())
     .pipe(concat('main.min.js'))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.scripts.dest));
 };
 

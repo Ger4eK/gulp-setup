@@ -6,9 +6,11 @@
 - [gulp-rename](https://www.npmjs.com/package/gulp-rename) For changing files name
 - [gulp-babel](https://www.npmjs.com/package/gulp-babel) Transforms Java Script into older standart
 - [@babel/core](https://www.npmjs.com/package/@babel/core) Core Babel
+- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env) For Babel compiling  
 - [gulp-concat](https://www.npmjs.com/package/gulp-concat) For concating our js files into one file
 - [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) Plugin to minify JS
-- [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) Maps for lines of code   
+- [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) Maps for lines of code 
+- [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) Automatic addition of prefixes in CSS   
 - [del](https://www.npmjs.com/package/del) Deletes files and directories
 
 ## Usage
