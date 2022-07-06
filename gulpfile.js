@@ -7,6 +7,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
+const imagemin = require('gulp-imagemin');
 const del = require('del');
 
 // Шляхи до наших початкових файлів
@@ -18,6 +19,10 @@ const paths = {
   scripts: {
     src: 'src/scripts/**/*.js',
     dest: 'dist/js/',
+  },
+  images: {
+    src: 'src/images/**',
+    dest: 'dist/images',
   },
 };
 
@@ -68,6 +73,17 @@ const scripts = () => {
     .pipe(gulp.dest(paths.scripts.dest));
 };
 
+const images = () => {
+  return gulp
+    .src(paths.images.src)
+    .pipe(
+      imagemin({
+        progressive: true,
+      })
+    )
+    .pipe(gulp.dest(paths.images.dest));
+};
+
 // Для слідкування за змінами в папках scripts i styles
 const watch = () => {
   gulp.watch(paths.styles.src, styles);
@@ -75,12 +91,13 @@ const watch = () => {
 };
 
 // Для об'єднання всіх потрібних функцій в одну команду
-const build = gulp.series(clean, gulp.parallel(styles, scripts), watch);
+const build = gulp.series(clean, gulp.parallel(styles, scripts, images), watch);
 
 //! gulp clean/styles...
 exports.clean = clean;
 exports.styles = styles;
 exports.scripts = scripts;
+exports.images = images;
 exports.watch = watch;
 exports.build = build;
 

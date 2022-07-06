@@ -11,6 +11,7 @@
 - [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) Plugin to minify JS
 - [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) Maps for lines of code 
 - [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) Automatic addition of prefixes in CSS   
+- [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) Plugin to minify images
 - [del](https://www.npmjs.com/package/del) Deletes files and directories
 
 ## Usage
@@ -18,10 +19,10 @@
 1. Download all files
 2. In the terminal complete the command - npm i
 3. After that complete the command - gulp
-4. Add files you need to the scripts & styles folders in the src.
-5. Write your code and enjoy Gulp.
+4. Add files you need to the scripts & styles folders in the src
+5. Write your code and enjoy Gulp
 
 ## Src structure
 
-> ./src/styles/\*\*/\*.less
-> ./src/scripts/\*\*/\*.js
+> ./src/styles/\*\*/\*.less  
+> ./src/scripts/\*\*/\*.js  
