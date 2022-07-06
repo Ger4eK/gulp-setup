@@ -18,10 +18,10 @@ const paths = {
 
 // Для очистки папки dist
 const clean = () => {
-   return del(['dist']);
- };
+  return del(['dist']);
+};
 
- // Для обробки стилів
+// Для обробки стилів
 const styles = () => {
   return gulp
     .src(paths.styles.src)
@@ -36,7 +36,19 @@ const styles = () => {
     .pipe(gulp.dest(paths.styles.dest));
 };
 
+// Для слідкування за змінами в папках scripts i styles
+const watch = () => {
+  gulp.watch(paths.styles.src, styles);
+};
+
+// Для об'єднання всіх потрібних функцій в одну команду
+const build = gulp.series(clean, styles, watch);
 
 //! gulp clean/styles...
 exports.clean = clean;
 exports.styles = styles;
+exports.watch = watch;
+exports.build = build;
+
+//! exports.default спрацює просто при написанні в консольці gulp
+exports.default = build;
