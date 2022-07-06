@@ -17,5 +17,5 @@
 5. Write your code and enjoy Gulp.
 
 ## Src structure
->./src/styles/\*\*/\*.less\ 
->./src/scripts/\*\*/\*.js\ 
+>./src/styles/\*\*/\*.less\   
+>./src/scripts/\*\*/\*.js\   
