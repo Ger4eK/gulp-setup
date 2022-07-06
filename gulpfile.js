@@ -2,6 +2,9 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const rename = require('gulp-rename');
 const cleanCSS = require('gulp-clean-css');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 const del = require('del');
 
 // Шляхи до наших початкових файлів
@@ -36,17 +39,31 @@ const styles = () => {
     .pipe(gulp.dest(paths.styles.dest));
 };
 
+// Для обробки скриптів
+const scripts = () => {
+  return gulp
+    .src(paths.scripts.src, {
+      sourcemaps: true,
+    })
+    .pipe(babel())
+    .pipe(uglify())
+    .pipe(concat('main.min.js'))
+    .pipe(gulp.dest(paths.scripts.dest));
+};
+
 // Для слідкування за змінами в папках scripts i styles
 const watch = () => {
   gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.scripts.src, scripts);
 };
 
 // Для об'єднання всіх потрібних функцій в одну команду
-const build = gulp.series(clean, styles, watch);
+const build = gulp.series(clean, gulp.parallel(styles, scripts), watch);
 
 //! gulp clean/styles...
 exports.clean = clean;
 exports.styles = styles;
+exports.scripts = scripts;
 exports.watch = watch;
 exports.build = build;
 
