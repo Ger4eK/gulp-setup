@@ -1,2 +1,3 @@
-let qwe = rtye
+let qwe = "rtye";
 console.log(qwe);
+//alert('hi');

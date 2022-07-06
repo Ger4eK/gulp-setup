@@ -12,6 +12,8 @@ const newer = require('gulp-newer');
 const htmlmin = require('gulp-htmlmin');
 const del = require('del');
 
+const browserSync = require('browser-sync').create();
+
 // Шляхи до наших початкових файлів
 const paths = {
   html: {
@@ -42,7 +44,8 @@ const html = () => {
   return gulp
     .src(paths.html.src)
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest(paths.html.dest));
+    .pipe(gulp.dest(paths.html.dest))
+    .pipe(browserSync.stream());
 };
 
 // Для обробки стилів
@@ -68,7 +71,8 @@ const styles = () => {
       })
     )
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.styles.dest));
+    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(browserSync.stream());
 };
 
 // Для обробки скриптів
@@ -84,7 +88,8 @@ const scripts = () => {
     .pipe(uglify())
     .pipe(concat('main.min.js'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.scripts.dest));
+    .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(browserSync.stream());
 };
 
 // Для обробки фото
@@ -97,13 +102,25 @@ const images = () => {
         progressive: true,
       })
     )
-    .pipe(gulp.dest(paths.images.dest));
+    .pipe(gulp.dest(paths.images.dest))
+    .pipe(browserSync.stream());
 };
 
 // Для слідкування за змінами в папках scripts i styles
 const watch = () => {
+  // Створюєм сервак для автоматичного оновленя сайту
+  browserSync.init({
+    server: {
+      baseDir: './dist/',
+    },
+  });
+  // при зміні html в нас не буде відбуватись оновлення тому ми додамо browserSync.reload
+  gulp.watch(paths.html.dest).on('change', browserSync.reload);
+  // оновленя відбуваються автоматично
+  gulp.watch(paths.html.src, html);
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
+  gulp.watch(paths.images.src, images);
 };
 
 // Для об'єднання всіх потрібних функцій в одну команду

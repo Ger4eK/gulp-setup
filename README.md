@@ -15,6 +15,7 @@
 - [gulp-newer](https://www.npmjs.com/package/gulp-newer) Plugin to minify only new images
 - [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Plugin to minify html
 - [del](https://www.npmjs.com/package/del) Deletes files and directories
+- [browser-sync](https://browsersync.io/docs/gulp) To automatically update the site when files are changed
 
 ## Usage
 
