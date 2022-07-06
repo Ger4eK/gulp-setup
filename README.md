@@ -12,6 +12,8 @@
 - [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) Maps for lines of code 
 - [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) Automatic addition of prefixes in CSS   
 - [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) Plugin to minify images
+- [gulp-newer](https://www.npmjs.com/package/gulp-newer) Plugin to minify only new images
+- [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Plugin to minify html
 - [del](https://www.npmjs.com/package/del) Deletes files and directories
 
 ## Usage

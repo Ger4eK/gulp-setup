@@ -8,10 +8,16 @@ const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
+const newer = require('gulp-newer');
+const htmlmin = require('gulp-htmlmin');
 const del = require('del');
 
 // Шляхи до наших початкових файлів
 const paths = {
+  html: {
+    src: 'src/*.html',
+    dest: 'dist/',
+  },
   styles: {
     src: 'src/styles/**/*.less',
     dest: 'dist/css/',
@@ -28,7 +34,15 @@ const paths = {
 
 // Для очистки папки dist
 const clean = () => {
-  return del(['dist']);
+  return del(['dist/*', '!dist/images']);
+};
+
+// Для обробки розмітки
+const html = () => {
+  return gulp
+    .src(paths.html.src)
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest(paths.html.dest));
 };
 
 // Для обробки стилів
@@ -73,9 +87,11 @@ const scripts = () => {
     .pipe(gulp.dest(paths.scripts.dest));
 };
 
+// Для обробки фото
 const images = () => {
   return gulp
     .src(paths.images.src)
+    .pipe(newer(paths.images.dest))
     .pipe(
       imagemin({
         progressive: true,
@@ -91,10 +107,16 @@ const watch = () => {
 };
 
 // Для об'єднання всіх потрібних функцій в одну команду
-const build = gulp.series(clean, gulp.parallel(styles, scripts, images), watch);
+const build = gulp.series(
+  clean,
+  html,
+  gulp.parallel(styles, scripts, images),
+  watch
+);
 
 //! gulp clean/styles...
 exports.clean = clean;
+exports.html = html;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.images = images;
