@@ -11,6 +11,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 const htmlmin = require('gulp-htmlmin');
+const fileinclude = require('gulp-file-include');
 const del = require('del');
 
 const browserSync = require('browser-sync').create();
@@ -22,7 +23,11 @@ const paths = {
     dest: 'dist/',
   },
   styles: {
-    src: ['src/styles/**/*.sass', 'src/styles/**/*.scss','src/styles/**/*.less'],
+    src: [
+      'src/styles/**/*.sass',
+      'src/styles/**/*.scss',
+      'src/styles/**/*.less',
+    ],
     dest: 'dist/css/',
   },
   scripts: {
@@ -44,6 +49,7 @@ const clean = () => {
 const html = () => {
   return gulp
     .src(paths.html.src)
+    .pipe(fileinclude())
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(paths.html.dest))
     .pipe(browserSync.stream());
@@ -51,30 +57,32 @@ const html = () => {
 
 // Для обробки стилів
 const styles = () => {
-  return gulp
-    .src(paths.styles.src)
-    .pipe(sourcemaps.init())
-    //.pipe(less())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
-    .pipe(
-      cleanCSS({
-        level: 2,
-      })
-    )
-    .pipe(
-      rename({
-        basename: 'main',
-        suffix: '.min',
-      })
-    )
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe(browserSync.stream());
+  return (
+    gulp
+      .src(paths.styles.src)
+      .pipe(sourcemaps.init())
+      //.pipe(less())
+      .pipe(sass().on('error', sass.logError))
+      .pipe(
+        autoprefixer({
+          cascade: false,
+        })
+      )
+      .pipe(
+        cleanCSS({
+          level: 2,
+        })
+      )
+      .pipe(
+        rename({
+          basename: 'main',
+          suffix: '.min',
+        })
+      )
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(paths.styles.dest))
+      .pipe(browserSync.stream())
+  );
 };
 
 // Для обробки скриптів

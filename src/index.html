@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/main.min.css">
-   <title>Document</title>
-</head>
-
+@@include('html/head.html', {
+'title': 'Головна'
+})
 <body>
-   <h1>Hello World</h1>
-   <p>react</p>
+   @@include('html/header.html', {})
+   <main>Main</main>
+   @@include('html/footer.html', {})
 
    <script src="js/main.min.js"></script>
 </body>
