@@ -24,9 +24,16 @@
 
 1. Download all files
 2. In the terminal complete the command - npm i
-3. After that complete the command - gulp
-4. Add files you need to the scripts & styles folders in the src
-5. Write your code and enjoy Gulp
+3. Download Path Autocomplete extension and add it tou your settings.json
+   > "path-autocomplete.pathMappings": {  
+   > "@images": "${folder}/src/images",  
+   > "@styles": "${folder}/src/styles",  
+   > "@scripts": "${folder}/src/scripts",  
+   > }  
+   *Folder names can be different
+4. After that complete the command - gulp
+5. Add files you need to the scripts & styles folders in the src
+6. Write your code and enjoy Gulp
 
 ## Src structure
 

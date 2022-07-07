@@ -12,6 +12,7 @@ const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 const htmlmin = require('gulp-htmlmin');
 const fileinclude = require('gulp-file-include');
+const replace = require('gulp-replace');
 const del = require('del');
 
 const browserSync = require('browser-sync').create();
@@ -50,6 +51,7 @@ const html = () => {
   return gulp
     .src(paths.html.src)
     .pipe(fileinclude())
+    .pipe(replace(/@images\//g, 'images/'))
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(paths.html.dest))
     .pipe(browserSync.stream());
