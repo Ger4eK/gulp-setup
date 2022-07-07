@@ -2,6 +2,8 @@
 
 - [gulp](https://www.npmjs.com/package/gulp) Gulp
 - [gulp-less](https://www.npmjs.com/package/gulp-less) For SCSS
+- [sass](https://www.npmjs.com/package/sass) Sass compiler  
+- [gulp-sass](https://www.npmjs.com/package/gulp-sass) Compiling Sass & Scss files
 - [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css) Plugin to minify CSS - remove unnecessary spaces, semicolon
 - [gulp-rename](https://www.npmjs.com/package/gulp-rename) For changing files name
 - [gulp-babel](https://www.npmjs.com/package/gulp-babel) Transforms Java Script into older standart
@@ -27,5 +29,5 @@
 
 ## Src structure
 
-> ./src/styles/\*\*/\*.less  
+> ./src/styles/\*\*/\*.scss    
 > ./src/scripts/\*\*/\*.js  
