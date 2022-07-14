@@ -20,7 +20,7 @@ const browserSync = require('browser-sync').create();
 // Шляхи до наших початкових файлів
 const paths = {
   html: {
-    src: 'src/*.html',
+    src: ['src/*.html', 'src/**/*.html'],
     dest: 'dist/',
   },
   styles: {
