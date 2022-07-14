@@ -62,6 +62,7 @@ const styles = () => {
   return (
     gulp
       .src(paths.styles.src)
+      .pipe(replace(/@images\//g, '../images/'))
       .pipe(sourcemaps.init())
       //.pipe(less())
       .pipe(sass().on('error', sass.logError))

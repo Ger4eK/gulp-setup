@@ -17,6 +17,7 @@
 - [gulp-newer](https://www.npmjs.com/package/gulp-newer) Plugin to minify only new images
 - [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) Plugin to minify html
 - [gulp-file-include](https://www.npmjs.com/package/gulp-file-include) For concating our html files into one file
+- [gulp-replace](https://www.npmjs.com/package/gulp-replace) Replace the folder names (for alias folders)
 - [del](https://www.npmjs.com/package/del) Deletes files and directories
 - [browser-sync](https://browsersync.io/docs/gulp) To automatically update the site when files are changed
 
@@ -24,7 +25,7 @@
 
 1. Download all files
 2. In the terminal complete the command - npm i
-3. Download Path Autocomplete extension and add it tou your settings.json
+3. Download Path Autocomplete extension and add it to your settings.json
    > "path-autocomplete.pathMappings": {  
    > "@images": "${folder}/src/images",  
    > "@styles": "${folder}/src/styles",  

@@ -1,19 +1,4 @@
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
+@import "./reset";
+@import "./global";
 
-body {
-   color: rgb(79, 171, 214);
-   font-size: 24px;
-   h1 {
-      &:hover {
-         text-decoration: underline;
-      }
-   }
-   a {
-      text-decoration: underline;
-   }
-   p {
-      font: 100% $font-stack;
-      color: $primary-color;
-   }
-}  
+

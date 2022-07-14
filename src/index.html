@@ -5,12 +5,13 @@
 })
 
 <body>
-   @@include('html/header.html', {})
-   <main>
-      <img src="@images/cover.png" alt="">
-   </main>
-   @@include('html/footer.html', {})
-
+   <div class='wrapper'>
+      @@include('html/header.html', {})
+      <main>
+         Main
+      </main>
+      @@include('html/footer.html', {})
+   </div>
    <script src="js/main.min.js"></script>
 </body>
 
