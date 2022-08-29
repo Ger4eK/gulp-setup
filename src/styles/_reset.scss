@@ -39,6 +39,10 @@ input::-ms-clear {
 
 button {
    cursor: pointer;
+   font-family: inherit;
+   font-weight: inherit;
+   font-size: inherit;
+   line-height: inherit;
 }
 
 button::-moz-focus-inner {

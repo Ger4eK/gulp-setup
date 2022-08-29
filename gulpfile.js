@@ -32,7 +32,7 @@ const paths = {
     dest: 'dist/css/',
   },
   scripts: {
-    src: 'src/scripts/**/*.js',
+    src: ['node_modules/jquery/dist/jquery.js', 'src/scripts/**/*.js'],
     dest: 'dist/js/',
   },
   images: {

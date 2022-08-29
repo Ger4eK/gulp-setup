@@ -1,2 +1,3 @@
-let qwe = 'rtye';
-console.log(qwe);
+$(function () {
+  $('body').css('background-color', '#29bed8');
+});

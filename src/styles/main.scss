@@ -1,19 +1,17 @@
 @import "./reset";
 @import "./global";
+@import "./vars";
 
 
 header {
    width: 100%;
    text-align: center;
-   background-color: rgb(76, 154, 228);
 }
 main {
    width: 100%;
    text-align: center;
-   background-color: rgb(41, 190, 216);
 }
 footer {
    width: 100%;
    text-align: center;
-   background-color: rgb(32, 243, 173);
 }
